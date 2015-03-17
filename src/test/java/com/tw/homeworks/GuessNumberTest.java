@@ -9,6 +9,7 @@ import static org.hamcrest.core.Is.is;
 public class GuessNumberTest
 {
     GuessNumber guessNumber;
+
     @Before
     public void setUp() throws Exception
     {
@@ -18,8 +19,9 @@ public class GuessNumberTest
     }
 
     @Test
-    public void should_return_4A0B_when_input_answer_equals_to_target_number_1234(){
-        
+    public void should_return_4A0B_when_input_answer_equals_to_target_number_1234()
+    {
+
         // given
         String inputAnswer = "1234";
 
@@ -29,39 +31,42 @@ public class GuessNumberTest
         //then
         assertThat(result, is("4A0B"));
     }
-    
+
     @Test
-    public void should_return_0A4B_when_input_answer_not_equals_to_target_number_1234_at_any_position(){
+    public void should_return_0A4B_when_input_answer_not_equals_to_target_number_1234_at_any_position()
+    {
         // given
         String inputAnswer = "4321";
 
         //when
         String result = guessNumber.guess(inputAnswer);
-                
+
         //then
         assertThat(result, is("0A4B"));
     }
-    
+
     @Test
-    public void should_return_2A2B_when_input_answer_is_1324_and_target_number_is_1234(){
+    public void should_return_2A2B_when_input_answer_is_1324_and_target_number_is_1234()
+    {
         // given
         String inputAnswer = "1324";
-        
+
         //when
         String result = guessNumber.guess(inputAnswer);
-                
+
         //then
         assertThat(result, is("2A2B"));
     }
-    
+
     @Test
-    public void should_return_0A0B_when_input_answer_is_5678_and_target_number_is_1234(){
+    public void should_return_0A0B_when_input_answer_is_5678_and_target_number_is_1234()
+    {
         // given
         String inputAnswer = "5678";
-        
+
         //when
         String result = guessNumber.guess(inputAnswer);
-                
+
         //then
         assertThat(result, is("0A0B"));
     }

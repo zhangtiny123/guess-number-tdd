@@ -13,13 +13,13 @@ public class GuessNumber
     {
         int numberOfA = 0;
         int numberOfB = 0;
-        for (int i=0; i<4; i++) {
+        for (int i = 0; i < 4; i++) {
             if (targetNumber.charAt(i) == inputAnswer.charAt(i)) {
                 numberOfA++;
                 continue;
             }
-            for (int j=0; j<4; j++) {
-                if((targetNumber.charAt(i) == inputAnswer.charAt(j)) && (i != j)) {
+            for (int j = 0; j < 4; j++) {
+                if ((targetNumber.charAt(i) == inputAnswer.charAt(j)) && (i != j)) {
                     numberOfB++;
                 }
             }
