@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class GuessNumberTest
 {
@@ -13,15 +15,14 @@ public class GuessNumberTest
     @Before
     public void setUp() throws Exception
     {
-        String targetNumber = "1234";
-        guessNumber = new GuessNumber(targetNumber);
-
+        TargetNumberGenerator generator = mock(TargetNumberGenerator.class);
+        when(generator.generate()).thenReturn("1234");
+        guessNumber = new GuessNumber(generator);
     }
 
     @Test
     public void should_return_4A0B_when_input_answer_equals_to_target_number_1234()
     {
-
         // given
         String inputAnswer = "1234";
 

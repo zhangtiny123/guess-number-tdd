@@ -4,9 +4,9 @@ public class GuessNumber
 {
     private String targetNumber;
 
-    public GuessNumber(String targetNumber)
+    public GuessNumber(TargetNumberGenerator targetNumber)
     {
-        this.targetNumber = targetNumber;
+        this.targetNumber = targetNumber.generate();
     }
 
     public String guess(String inputAnswer)
