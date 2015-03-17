@@ -19,7 +19,7 @@ public class GuessNumber
                 continue;
             }
             for (int j=0; j<4; j++) {
-                if(targetNumber.charAt(i) == inputAnswer.charAt(j)) {
+                if((targetNumber.charAt(i) == inputAnswer.charAt(j)) && (i != j)) {
                     numberOfB++;
                 }
             }
