@@ -2,11 +2,11 @@ package com.tw.homeworks;
 
 import java.io.PrintStream;
 
-public class Out
+public class ConsoleOutput
 {
     private PrintStream printStream;
 
-    public Out(PrintStream printStream)
+    public ConsoleOutput(PrintStream printStream)
     {
         this.printStream = printStream;
     }

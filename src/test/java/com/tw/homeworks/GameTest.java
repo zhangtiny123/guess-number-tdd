@@ -16,12 +16,12 @@ public class GameTest
     @Before
     public void setUp() throws Exception
     {
-        TargetNumberGenerator generator = mock(TargetNumberGenerator.class);
-        when(generator.generate()).thenReturn("1234");
-        GuessNumber guessNumber = new GuessNumber(generator);
+        AnswerGenerator generator = mock(AnswerGenerator.class);
+        when(generator.generate()).thenReturn(new StringBuilder().append("1234"));
+        Answer answer = new Answer(generator);
         outPut = mock(PrintStream.class);
-        Out out = new Out(outPut);
-        game = new Game(guessNumber, out);
+        ConsoleOutput consoleOutput = new ConsoleOutput(outPut);
+        game = new Game(answer, consoleOutput);
 
     }
 

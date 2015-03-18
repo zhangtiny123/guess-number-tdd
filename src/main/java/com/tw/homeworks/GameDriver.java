@@ -6,6 +6,8 @@ import java.io.IOException;
 public class GameDriver
 {
 
+    public static final int LEFT_TIMES = 6;
+    public static final String GAME_OVER_MESSAGE = "Game Over!";
     private Game game;
     private int timeLeft;
     private BufferedReader bufferedReader;
@@ -14,26 +16,30 @@ public class GameDriver
     {
         this.game = game;
         this.bufferedReader = bufferedReader;
-        timeLeft = 6;
+        timeLeft = LEFT_TIMES;
     }
 
     public void initialGame()
     {
-        timeLeft = 6;
+        timeLeft = LEFT_TIMES;
     }
 
     public void start() throws IOException
     {
         String flag = "";
-        Out out = game.getOut();
-        while (!flag.equals("4A0B") && timeLeft != 0) {
-            out.outToConsole("Please input your guessing(" + timeLeft + "):");
+        ConsoleOutput consoleOutput = game.getConsoleOutput();
+        while (gameIsNotOver(flag)) {
+            consoleOutput.outToConsole(promptMessage(timeLeft));
             String inputNumber = bufferedReader.readLine();
             flag = game.playWith(inputNumber);
             timeLeft--;
         }
         if (timeLeft == 0) {
-            out.outToConsole("Game Over!");
+            consoleOutput.outToConsole(GAME_OVER_MESSAGE);
         }
     }
+
+    private String promptMessage(int timeLeft) {return "Please input your guessing(" + timeLeft + "):";}
+
+    private boolean gameIsNotOver(String flag) {return !flag.equals("4A0B") && timeLeft != 0;}
 }

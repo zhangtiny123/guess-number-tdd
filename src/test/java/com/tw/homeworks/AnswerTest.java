@@ -8,16 +8,16 @@ import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class GuessNumberTest
+public class AnswerTest
 {
-    private GuessNumber guessNumber;
+    private Answer answer;
 
     @Before
     public void setUp() throws Exception
     {
-        TargetNumberGenerator generator = mock(TargetNumberGenerator.class);
-        when(generator.generate()).thenReturn("1234");
-        guessNumber = new GuessNumber(generator);
+        AnswerGenerator generator = mock(AnswerGenerator.class);
+        when(generator.generate()).thenReturn(new StringBuilder().append("1234"));
+        answer = new Answer(generator);
     }
 
     @Test
@@ -27,7 +27,7 @@ public class GuessNumberTest
         String inputAnswer = "1234";
 
         //when
-        String result = guessNumber.guess(inputAnswer);
+        String result = answer.compareWith(inputAnswer);
 
         //then
         assertThat(result, is("4A0B"));
@@ -40,7 +40,7 @@ public class GuessNumberTest
         String inputAnswer = "4321";
 
         //when
-        String result = guessNumber.guess(inputAnswer);
+        String result = answer.compareWith(inputAnswer);
 
         //then
         assertThat(result, is("0A4B"));
@@ -53,7 +53,7 @@ public class GuessNumberTest
         String inputAnswer = "1324";
 
         //when
-        String result = guessNumber.guess(inputAnswer);
+        String result = answer.compareWith(inputAnswer);
 
         //then
         assertThat(result, is("2A2B"));
@@ -66,7 +66,7 @@ public class GuessNumberTest
         String inputAnswer = "5678";
 
         //when
-        String result = guessNumber.guess(inputAnswer);
+        String result = answer.compareWith(inputAnswer);
 
         //then
         assertThat(result, is("0A0B"));

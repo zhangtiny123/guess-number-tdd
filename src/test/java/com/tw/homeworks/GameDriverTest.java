@@ -12,21 +12,21 @@ import static org.mockito.Mockito.*;
 
 public class GameDriverTest
 {
-    private PrintStream out;
+    private PrintStream output;
     private InOrder inOrder;
     private Game game;
 
     @Before
     public void setUp() throws Exception
     {
-        out = mock(PrintStream.class);
-        inOrder = inOrder(out);
+        output = mock(PrintStream.class);
+        inOrder = inOrder(output);
 
-        TargetNumberGenerator targetNumber = mock(TargetNumberGenerator.class);
-        when(targetNumber.generate()).thenReturn("1234");
-        GuessNumber guessNumber = new GuessNumber(targetNumber);
-        Out outPut = new Out(out);
-        game = new Game(guessNumber, outPut);
+        AnswerGenerator targetNumber = mock(AnswerGenerator.class);
+        when(targetNumber.generate()).thenReturn(new StringBuilder().append("1234"));
+        Answer answer = new Answer(targetNumber);
+        ConsoleOutput consoleOutputPut = new ConsoleOutput(output);
+        game = new Game(answer, consoleOutputPut);
     }
 
     @Test
@@ -41,8 +41,8 @@ public class GameDriverTest
         gameDriver.start();
 
         //then
-        inOrder.verify(out).println("Please input your guessing(6):");
-        inOrder.verify(out).println("congratulations!");
+        inOrder.verify(output).println("Please input your guessing(6):");
+        inOrder.verify(output).println("congratulations!");
     }
 
     @Test
@@ -57,12 +57,12 @@ public class GameDriverTest
         gameDriver.start();
 
         //then
-        inOrder.verify(out).println("Please input your guessing(6):");
-        inOrder.verify(out).println("1A0B");
-        inOrder.verify(out).println("Please input your guessing(5):");
-        inOrder.verify(out).println("0A2B");
-        inOrder.verify(out).println("Please input your guessing(4):");
-        inOrder.verify(out).println("congratulations!");
+        inOrder.verify(output).println("Please input your guessing(6):");
+        inOrder.verify(output).println("1A0B");
+        inOrder.verify(output).println("Please input your guessing(5):");
+        inOrder.verify(output).println("0A2B");
+        inOrder.verify(output).println("Please input your guessing(4):");
+        inOrder.verify(output).println("congratulations!");
     }
 
     @Test
@@ -78,18 +78,18 @@ public class GameDriverTest
         gameDriver.start();
 
         //then
-        inOrder.verify(out).println("Please input your guessing(6):");
-        inOrder.verify(out).println("1A0B");
-        inOrder.verify(out).println("Please input your guessing(5):");
-        inOrder.verify(out).println("0A2B");
-        inOrder.verify(out).println("Please input your guessing(4):");
-        inOrder.verify(out).println("0A3B");
-        inOrder.verify(out).println("Please input your guessing(3):");
-        inOrder.verify(out).println("2A0B");
-        inOrder.verify(out).println("Please input your guessing(2):");
-        inOrder.verify(out).println("0A2B");
-        inOrder.verify(out).println("Please input your guessing(1):");
-        inOrder.verify(out).println("3A0B");
-        inOrder.verify(out).println("Game Over!");
+        inOrder.verify(output).println("Please input your guessing(6):");
+        inOrder.verify(output).println("1A0B");
+        inOrder.verify(output).println("Please input your guessing(5):");
+        inOrder.verify(output).println("0A2B");
+        inOrder.verify(output).println("Please input your guessing(4):");
+        inOrder.verify(output).println("0A3B");
+        inOrder.verify(output).println("Please input your guessing(3):");
+        inOrder.verify(output).println("2A0B");
+        inOrder.verify(output).println("Please input your guessing(2):");
+        inOrder.verify(output).println("0A2B");
+        inOrder.verify(output).println("Please input your guessing(1):");
+        inOrder.verify(output).println("3A0B");
+        inOrder.verify(output).println("Game Over!");
     }
 }
