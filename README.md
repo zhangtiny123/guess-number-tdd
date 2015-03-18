@@ -22,6 +22,12 @@
 1. 使GuessNumber依赖于TargetGenerator
 2. 实例化一个GuessNumber类就有了targetNumber
 
+## task 4
+* Game类能执行一次猜测的判断和处理，target依然是“1234”
 
+1. 当猜测数字输入是“1234”的时候，打印信息“Congratulations!”
+1. 当猜测数字输入是“4321”的时候，打印“0A4B”
+1. 当猜测数字输入是“1324”的时候，打印“2A2B”
+1. 当猜测数字输入是“5678”的时候，打印“4A0B”
 
 
