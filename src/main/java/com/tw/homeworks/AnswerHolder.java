@@ -1,13 +1,14 @@
 package com.tw.homeworks;
 
-public class Game
+import com.tw.homeworks.config.Config;
+import com.tw.homeworks.view.ConsoleOutput;
+
+public class AnswerHolder
 {
-    public static final String SUCCESS_MESSAGE = "congratulations!";
-    public static final String SUCCESS_CODE = "4A0B";
     private final Answer answer;
     private final ConsoleOutput consoleOutput;
 
-    public Game(Answer answer, ConsoleOutput consoleOutput)
+    public AnswerHolder(Answer answer, ConsoleOutput consoleOutput)
     {
 
         this.answer = answer;
@@ -19,11 +20,11 @@ public class Game
         return consoleOutput;
     }
 
-    public String playWith(String inputNumber)
+    public String guessWith(String inputNumber)
     {
         String guessResult = answer.compareWith(inputNumber);
-        if (guessResult.equals(SUCCESS_CODE)) {
-            consoleOutput.outToConsole(SUCCESS_MESSAGE);
+        if (guessResult.equals(Config.SUCCESS_CODE)) {
+            consoleOutput.outToConsole(Config.SUCCESS_MESSAGE);
         } else {
             consoleOutput.outToConsole(guessResult);
         }

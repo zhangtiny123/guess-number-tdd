@@ -1,5 +1,6 @@
 package com.tw.homeworks;
 
+import com.tw.homeworks.view.ConsoleOutput;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
@@ -10,11 +11,11 @@ import java.io.PrintStream;
 
 import static org.mockito.Mockito.*;
 
-public class GameDriverTest
+public class GameFlowTest
 {
     private PrintStream output;
     private InOrder inOrder;
-    private Game game;
+    private AnswerHolder answerHolder;
 
     @Before
     public void setUp() throws Exception
@@ -26,7 +27,7 @@ public class GameDriverTest
         when(targetNumber.generate()).thenReturn(new StringBuilder().append("1234"));
         Answer answer = new Answer(targetNumber);
         ConsoleOutput consoleOutputPut = new ConsoleOutput(output);
-        game = new Game(answer, consoleOutputPut);
+        answerHolder = new AnswerHolder(answer, consoleOutputPut);
     }
 
     @Test
@@ -35,10 +36,10 @@ public class GameDriverTest
         // given
         BufferedReader bufferedReader = mock(BufferedReader.class);
         when(bufferedReader.readLine()).thenReturn("1234");
-        GameDriver gameDriver = new GameDriver(game, bufferedReader);
+        GameFlow gameFlow = new GameFlow(answerHolder, bufferedReader);
 
         //when
-        gameDriver.start();
+        gameFlow.start();
 
         //then
         inOrder.verify(output).println("Please input your guessing(6):");
@@ -51,10 +52,10 @@ public class GameDriverTest
         // given
         BufferedReader bufferedReader = mock(BufferedReader.class);
         when(bufferedReader.readLine()).thenReturn("1567").thenReturn("3476").thenReturn("1234");
-        GameDriver gameDriver = new GameDriver(game, bufferedReader);
+        GameFlow gameFlow = new GameFlow(answerHolder, bufferedReader);
 
         //when
-        gameDriver.start();
+        gameFlow.start();
 
         //then
         inOrder.verify(output).println("Please input your guessing(6):");
@@ -70,12 +71,17 @@ public class GameDriverTest
     {
         // given
         BufferedReader bufferedReader = mock(BufferedReader.class);
-        when(bufferedReader.readLine()).thenReturn("1567").thenReturn("3476").thenReturn("2316").thenReturn(
-                "7834").thenReturn("2456").thenReturn("5234");
-        GameDriver gameDriver = new GameDriver(game, bufferedReader);
+        when(bufferedReader.readLine())
+                .thenReturn("1567")
+                .thenReturn("3476")
+                .thenReturn("2316")
+                .thenReturn("7834")
+                .thenReturn("2456")
+                .thenReturn("5234");
+        GameFlow gameFlow = new GameFlow(answerHolder, bufferedReader);
 
         //when
-        gameDriver.start();
+        gameFlow.start();
 
         //then
         inOrder.verify(output).println("Please input your guessing(6):");

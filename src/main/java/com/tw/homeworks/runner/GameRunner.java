@@ -1,4 +1,10 @@
-package com.tw.homeworks;
+package com.tw.homeworks.runner;
+
+import com.tw.homeworks.Answer;
+import com.tw.homeworks.AnswerGenerator;
+import com.tw.homeworks.AnswerHolder;
+import com.tw.homeworks.GameFlow;
+import com.tw.homeworks.view.ConsoleOutput;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,12 +18,11 @@ public class GameRunner
         AnswerGenerator targetGenerator = new AnswerGenerator(new Random());
         Answer answer = new Answer(targetGenerator);
         ConsoleOutput consoleOutput = new ConsoleOutput(System.out);
-        Game game = new Game(answer, consoleOutput);
+        AnswerHolder answerHolder = new AnswerHolder(answer, consoleOutput);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        GameDriver gameDriver = new GameDriver(game, bufferedReader);
+        GameFlow gameFlow = new GameFlow(answerHolder, bufferedReader);
 
-        gameDriver.initialGame();
-        gameDriver.start();
+        gameFlow.start();
     }
 
 }

@@ -1,10 +1,9 @@
 package com.tw.homeworks;
 
+import com.tw.homeworks.config.Config;
+
 public class Answer
 {
-    public static final int LENGTH = 4;
-    public static final String successSymbol = "A";
-    public static final String wrongPositionSymbol = "B";
     private StringBuilder answer;
 
     public Answer(AnswerGenerator answer)
@@ -16,17 +15,17 @@ public class Answer
     {
         int successCount = 0;
         int wrongPositionCount = 0;
-        for (int i = 0; i < LENGTH; i++) {
+        for (int i = 0; i < Config.ANSWER_LENGTH; i++) {
             if (answer.charAt(i) == inputAnswer.charAt(i)) {
                 successCount++;
                 continue;
             }
-            for (int j = 0; j < LENGTH; j++) {
+            for (int j = 0; j < Config.ANSWER_LENGTH; j++) {
                 if ((answer.charAt(i) == inputAnswer.charAt(j)) && (i != j)) {
                     wrongPositionCount++;
                 }
             }
         }
-        return successCount + successSymbol + wrongPositionCount + wrongPositionSymbol;
+        return successCount + Config.SUCCESS_SYMBOL + wrongPositionCount + Config.WRONG_POSITION_SYMBOL;
     }
 }

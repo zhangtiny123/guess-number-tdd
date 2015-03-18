@@ -1,11 +1,12 @@
 package com.tw.homeworks;
 
+import com.tw.homeworks.config.Config;
+
 import java.util.Random;
 
 public class AnswerGenerator
 {
-    public static final int RANGE = 10;
-    public static final int LENGTH = 4;
+
     private final Random random;
 
     public AnswerGenerator(Random random)
@@ -16,10 +17,10 @@ public class AnswerGenerator
     public StringBuilder generate()
     {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < LENGTH; i++) {
+        for (int i = 0; i < Config.ANSWER_LENGTH; i++) {
             String singleNumber;
             do {
-                singleNumber = String.valueOf(random.nextInt(RANGE));
+                singleNumber = String.valueOf(random.nextInt(Config.ANSWER_ELEMENT_RANGE));
             } while (stringBuilder.indexOf(singleNumber) != -1);
             stringBuilder.append(singleNumber);
         }

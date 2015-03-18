@@ -1,5 +1,6 @@
 package com.tw.homeworks;
 
+import com.tw.homeworks.view.ConsoleOutput;
 import org.junit.Test;
 
 import java.io.PrintStream;

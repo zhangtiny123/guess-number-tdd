@@ -1,4 +1,4 @@
-package com.tw.homeworks;
+package com.tw.homeworks.view;
 
 import java.io.PrintStream;
 

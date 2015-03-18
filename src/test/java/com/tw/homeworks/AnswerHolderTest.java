@@ -1,5 +1,6 @@
 package com.tw.homeworks;
 
+import com.tw.homeworks.view.ConsoleOutput;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -8,10 +9,10 @@ import java.io.PrintStream;
 
 import static org.mockito.Mockito.*;
 
-public class GameTest
+public class AnswerHolderTest
 {
     private PrintStream outPut;
-    private Game game;
+    private AnswerHolder answerHolder;
 
     @Before
     public void setUp() throws Exception
@@ -21,7 +22,7 @@ public class GameTest
         Answer answer = new Answer(generator);
         outPut = mock(PrintStream.class);
         ConsoleOutput consoleOutput = new ConsoleOutput(outPut);
-        game = new Game(answer, consoleOutput);
+        answerHolder = new AnswerHolder(answer, consoleOutput);
 
     }
 
@@ -29,7 +30,7 @@ public class GameTest
     public void should_print_congratulations_when_input_is_correct() throws IOException
     {
         //when
-        game.playWith("1234");
+        answerHolder.guessWith("1234");
 
         //then
         verify(outPut).println("congratulations!");
@@ -39,7 +40,7 @@ public class GameTest
     public void should_print_0A4B()
     {
         //when
-        game.playWith("4321");
+        answerHolder.guessWith("4321");
 
         //then
         verify(outPut).println("0A4B");
@@ -49,7 +50,7 @@ public class GameTest
     public void should_print_2A2B_and_not_correct_message()
     {
         //when
-        game.playWith("1324");
+        answerHolder.guessWith("1324");
 
         //then
         verify(outPut).println("2A2B");
@@ -59,7 +60,7 @@ public class GameTest
     public void should_print_0A0B()
     {
         //when
-        game.playWith("5678");
+        answerHolder.guessWith("5678");
 
         //then
         verify(outPut).println("0A0B");
