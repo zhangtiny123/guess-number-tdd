@@ -10,20 +10,17 @@ import static org.mockito.Mockito.*;
 
 public class GameTest
 {
-    TargetNumberGenerator generator;
-    GuessNumber guessNumber;
-    PrintStream outPut;
-    Out out;
-    Game game;
+    private PrintStream outPut;
+    private Game game;
 
     @Before
     public void setUp() throws Exception
     {
-        generator = mock(TargetNumberGenerator.class);
+        TargetNumberGenerator generator = mock(TargetNumberGenerator.class);
         when(generator.generate()).thenReturn("1234");
-        guessNumber = new GuessNumber(generator);
+        GuessNumber guessNumber = new GuessNumber(generator);
         outPut = mock(PrintStream.class);
-        out = new Out(outPut);
+        Out out = new Out(outPut);
         game = new Game(guessNumber, out);
 
     }

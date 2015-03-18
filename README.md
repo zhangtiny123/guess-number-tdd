@@ -30,4 +30,29 @@
 1. 当猜测数字输入是“1324”的时候，打印“2A2B”
 1. 当猜测数字输入是“5678”的时候，打印“4A0B”
 
+## task 5
+* Runner类可以执行游戏在console运行的整个逻辑
+* 依赖于Game类，因此需要playWith方法返回猜测结果信息
 
+测试用例（正确答案是"1234"）
+1. 游戏开始，输入"1234",验证依次打印
+"Please input your guessing(6):",
+"congratulations!"
+
+2. 游戏开始，依次输入"1567","3476","1234",验证依次打印
+"Please input your guessing(6):",
+"1A0B\nPlease input your guessing(5):",
+"0A2B\nPlease input your guessing(4):",
+"congratulations!"
+
+3. 游戏开始，依次输入"1567","3476","2316","7834","2456","5234",验证依次打印
+"Please input your guessing(6):",
+"1A0B\nPlease input your guessing(5):",
+"0A2B\nPlease input your guessing(4):",
+"0A3B\nPlease input your guessing(3):",
+"2A0B\nPlease input your guessing(2):",
+"0A2B\nPlease input your guessing(1):",
+"3A0B\nGame over~"
+
+## task 6
+* GameRunner类在控制台运行猜数字的游戏

@@ -10,7 +10,7 @@ import static org.mockito.Mockito.when;
 
 public class GuessNumberTest
 {
-    GuessNumber guessNumber;
+    private GuessNumber guessNumber;
 
     @Before
     public void setUp() throws Exception

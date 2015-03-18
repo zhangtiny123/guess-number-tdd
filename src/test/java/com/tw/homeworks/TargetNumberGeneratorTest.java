@@ -10,7 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class TargetNumberGeneratorTest
 {
-    TargetNumberGenerator targetNumberGenerator;
+    private TargetNumberGenerator targetNumberGenerator;
 
     @Before
     public void setUp() throws Exception

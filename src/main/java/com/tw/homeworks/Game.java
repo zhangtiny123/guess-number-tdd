@@ -12,7 +12,12 @@ public class Game
         this.out = out;
     }
 
-    public void playWith(String inputNumber)
+    public Out getOut()
+    {
+        return out;
+    }
+
+    public String playWith(String inputNumber)
     {
         String guessResult = guessNumber.guess(inputNumber);
         if (guessResult.equals("4A0B")) {
@@ -20,5 +25,7 @@ public class Game
         } else {
             out.outToConsole(guessResult);
         }
+        return guessResult;
     }
+    
 }
