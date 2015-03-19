@@ -71,13 +71,8 @@ public class GameFlowTest
     {
         // given
         BufferedReader bufferedReader = mock(BufferedReader.class);
-        when(bufferedReader.readLine())
-                .thenReturn("1567")
-                .thenReturn("3476")
-                .thenReturn("2316")
-                .thenReturn("7834")
-                .thenReturn("2456")
-                .thenReturn("5234");
+        when(bufferedReader.readLine()).thenReturn("1567").thenReturn("3476").thenReturn("2316").thenReturn(
+                "7834").thenReturn("2456").thenReturn("5234");
         GameFlow gameFlow = new GameFlow(answerHolder, bufferedReader);
 
         //when

@@ -8,7 +8,6 @@ import java.io.IOException;
 
 public class GameFlow
 {
-
     private AnswerHolder answerHolder;
     private int timeLeft;
     private BufferedReader bufferedReader;
@@ -30,6 +29,7 @@ public class GameFlow
             stringBuilder.replace(0, stringBuilder.length(), answerHolder.guessWith(inputNumber));
             timeLeft--;
         }
+        System.out.println();
         if (timeLeft == 0) {
             consoleOutput.outToConsole(Config.GAME_OVER);
         }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="  
+    http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="bufferedReader" class="java.io.BufferedReader">
+        <constructor-arg ref="inputStreamReader"/>
+    </bean>
+    
+    <bean id="inputStreamReader" class="java.io.InputStreamReader">
+        <constructor-arg ref="mySystemIn"/>
+    </bean>
+
+    <bean id="mySystemIn"
+          class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+        <property name="staticField" value="java.lang.System.in"/>
+    </bean>
+
+    <bean id="consoleOutput" class="com.tw.homeworks.view.ConsoleOutput">
+        <constructor-arg ref="printStream"/>
+    </bean>
+
+    <bean id="printStream" class="java.io.PrintStream">
+        <constructor-arg type="java.io.OutputStream" ref="mySystemOut"/>
+    </bean>
+
+    <bean id="mySystemOut"
+          class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+        <property name="staticField" value="java.lang.System.out"/>
+    </bean>
+    
+    <bean class="org.mockito.InOrder" abstract="true"/>
+    
+    <bean id="answer" class="com.tw.homeworks.Answer">
+        <constructor-arg ref="answerGenerator"/>
+    </bean>
+    
+    <bean id="answerGenerator" class="com.tw.homeworks.AnswerGenerator">
+        <constructor-arg ref="random"/>
+    </bean>
+    
+    <bean id="answerHolder" class="com.tw.homeworks.AnswerHolder">
+        <constructor-arg index="0" ref="answer"/>
+        <constructor-arg index="1" ref="consoleOutput"/>
+    </bean>
+    
+    <bean id="random" class="java.util.Random"/>
+    
+    <bean id="gameFlow" class="com.tw.homeworks.GameFlow">
+        <constructor-arg index="0" ref="answerHolder"/>
+        <constructor-arg index="1" ref="bufferedReader"/>
+    </bean>
+
+</beans>  

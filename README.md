@@ -63,3 +63,7 @@
 ## task 6
 * 需要一个runner类来调用游戏的执行
 * GameRunner类在控制台运行猜数字的游戏
+
+# task 7
+* 虽然是个小程序，太多的new关键字总是看起来不够爽，因此需要引入IoC框架。
+* 引入spring IoC框架

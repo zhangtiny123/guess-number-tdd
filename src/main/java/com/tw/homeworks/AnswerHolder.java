@@ -10,7 +10,6 @@ public class AnswerHolder
 
     public AnswerHolder(Answer answer, ConsoleOutput consoleOutput)
     {
-
         this.answer = answer;
         this.consoleOutput = consoleOutput;
     }
@@ -30,5 +29,4 @@ public class AnswerHolder
         }
         return guessResult;
     }
-    
 }
