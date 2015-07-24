@@ -1,5 +1,6 @@
 package com.tw.homeworks;
 
+import com.tw.homeworks.components.AnswerHolder;
 import com.tw.homeworks.config.Config;
 import com.tw.homeworks.view.ConsoleOutput;
 
@@ -29,7 +30,6 @@ public class GameFlow
             stringBuilder.replace(0, stringBuilder.length(), answerHolder.guessWith(inputNumber));
             timeLeft--;
         }
-        System.out.println();
         if (timeLeft == 0) {
             consoleOutput.outToConsole(Config.GAME_OVER);
         }

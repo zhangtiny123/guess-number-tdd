@@ -33,15 +33,15 @@
     
     <bean class="org.mockito.InOrder" abstract="true"/>
     
-    <bean id="answer" class="com.tw.homeworks.Answer">
+    <bean id="answer" class="com.tw.homeworks.components.Answer">
         <constructor-arg ref="answerGenerator"/>
     </bean>
     
-    <bean id="answerGenerator" class="com.tw.homeworks.AnswerGenerator">
+    <bean id="answerGenerator" class="com.tw.homeworks.components.AnswerGenerator">
         <constructor-arg ref="random"/>
     </bean>
     
-    <bean id="answerHolder" class="com.tw.homeworks.AnswerHolder">
+    <bean id="answerHolder" class="com.tw.homeworks.components.AnswerHolder">
         <constructor-arg index="0" ref="answer"/>
         <constructor-arg index="1" ref="consoleOutput"/>
     </bean>

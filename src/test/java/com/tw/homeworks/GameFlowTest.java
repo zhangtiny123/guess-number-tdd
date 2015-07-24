@@ -1,5 +1,8 @@
 package com.tw.homeworks;
 
+import com.tw.homeworks.components.Answer;
+import com.tw.homeworks.components.AnswerGenerator;
+import com.tw.homeworks.components.AnswerHolder;
 import com.tw.homeworks.view.ConsoleOutput;
 import org.junit.Before;
 import org.junit.Test;
